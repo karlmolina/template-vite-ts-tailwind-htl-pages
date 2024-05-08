@@ -1,25 +1,21 @@
 import { html } from 'htl'
 
-export default (sketchList: string[]) => {
-  const link = (name: string) =>
-    html`<li class="my-2 sm:my-4">
-      <a
-        class="inline-block w-full text-2xl hover:bg-teal-100 sm:text-4xl"
-        href="#/${name}"
-        >${name}</a
-      >
-    </li>`
-  return html`
-    <div class="m-auto max-w-screen-lg px-8 pt-16 sm:px-16 sm:pt-24">
-      <h1
-        class="
-          border-b-0.05em mb-1 mt-2 box-border break-words border-teal-500 font-[questrial] text-4xl font-normal tracking-tighter text-[#1A936F] underline sm:text-6xl md:text-8xl"
-      >
-        karlmolina.com
-      </h1>
-      <ul class="font-barlow my-4 list-none text-left text-[#114b5f]">
-        ${sketchList.map((name) => link(name))}
-      </ul>
-    </div>
-  `
+const background = () => {
+  return html`<div class="fixed bottom-0 left-0 right-0 top-0 flex">
+      <div class="w-1/6 bg-red-500"></div>
+      <div class="w-1/6 bg-orange-500"></div>
+      <div class="w-1/6 bg-yellow-500"></div>
+      <div class="w-1/6 bg-green-500"></div>
+      <div class="w-1/6 bg-blue-500"></div>
+      <div class="w-1/6 bg-violet-500"></div>
+    </div>`
+}
+
+const page = (children: HTMLElement) => {
+  return html`<div class="p-20">${children}</div>`
+}
+
+export default () => {
+  return page(html`${background()}<h1 class="text-4xl md:text-6xl font-bold text-center text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">Template</h1>
+  `)
 }
